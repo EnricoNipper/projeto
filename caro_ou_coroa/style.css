@@ -1,0 +1,89 @@
+body{
+     background-image: url(ahttps://media.istockphoto.com/id/1168965356/pt/vetorial/abstract-geometric-black-and-white-glitch-background.jpg?s=612x612&w=0&k=20&c=n2CQeV7y9QHXImsf6NtVzFZEGqGDwzUi6CeX8BtRTe4=);
+    font-family: 'Montserrat', sans-serif;
+}
+
+header{ 
+    margin: 0;
+  padding: 0;
+    background: #BBBBBB;
+    padding: 30px;
+}
+main{
+    
+    font-size: 30px;
+    width: 700px;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+
+
+}
+.box {   
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 970px;
+    margin: auto;
+}
+.box img{
+    width: 250px;
+    height: 200px;
+}
+.box img:hover{
+    width: 250px;
+    height: 200px;
+}
+nav{
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
+nav li {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+nav a { 
+    text-transform: uppercase;
+    color:black;
+    font-weight: bold;
+    font-size: 22px ;
+    text-decoration: none;
+
+}
+nav a:hover{
+    color: rgb(204, 114, 29);
+    text-decoration: underline;
+}
+.projeto {
+    
+    position: relative;
+    width: 940px;
+    margin: auto;
+
+}
+.principal {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 93px;
+    color: rgb(204, 114, 29);
+    position: relative;
+    width: 1000px;
+    margin: auto;
+    
+    box-sizing: border-box;
+    border-color: black ;
+    border-width: 3px ;
+    border-style: solid ;
+    border-radius: 20px
+}
+
+
+
+
+
+
+
+
+
