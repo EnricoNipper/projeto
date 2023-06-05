@@ -1,31 +1,31 @@
 "use strict";
 
-var input = document.getElementById('input'), // input/output button
-  number = document.querySelectorAll('.numbers div'), // number buttons
-  operator = document.querySelectorAll('.operators div'), // operator buttons
-  result = document.getElementById('result'), // equal button
-  clear = document.getElementById('clear'), // clear button
-  resultDisplayed = false; // flag to keep an eye on what output is displayed
+var input = document.getElementById('input'), // botão de entrada/saída
+  number = document.querySelectorAll('.numbers div'), // numeros dos botoes 
+  operator = document.querySelectorAll('.operators div'), // botao de operatores
+  result = document.getElementById('result'), // botao de igualdade 
+  clear = document.getElementById('clear'), // botao de reset/limpar
+  resultDisplayed = false; // exibir os valores no display
 
-// adding click handlers to number buttons
+// adicionando manipuladores de clique a botões numéricos
 for (var i = 0; i < number.length; i++) {
   number[i].addEventListener("click", function(e) {
 
-    // storing current input string and its last character in variables - used later
+// armazenando a string de entrada atual e seu último caractere em variáveis ​​- usado posteriormente
     var currentString = input.innerHTML;
     var lastChar = currentString[currentString.length - 1];
 
-    // if result is not diplayed, just keep adding
+    // armazenando uma string de entrada atual e seu último caractere em variável - usado posteriormente
     if (resultDisplayed === false) {
       input.innerHTML += e.target.innerHTML;
     } else if (resultDisplayed === true && lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
-      // if result is currently displayed and user pressed an operator
-      // we need to keep on adding to the string for next operation
+      // se o resultado é exibido atualmente e o usuário pressionou um operador
+      // precisamos continuar adicionando à string para a próxima operação
       resultDisplayed = false;
       input.innerHTML += e.target.innerHTML;
     } else {
-      // if result is currently displayed and user pressed a number
-      // we need clear the input string and add the new input to start the new opration
+      // se o resultado é exibido atualmente e o usuário pressionou um número
+      // precisamos limpar a string de entrada e adicionar a nova entrada para iniciar a nova operação
       resultDisplayed = false;
       input.innerHTML = "";
       input.innerHTML += e.target.innerHTML;
@@ -34,40 +34,40 @@ for (var i = 0; i < number.length; i++) {
   });
 }
 
-// adding click handlers to number buttons
+// adicionando manipuladores de clique a botões numéricos
 for (var i = 0; i < operator.length; i++) {
   operator[i].addEventListener("click", function(e) {
 
-    // storing current input string and its last character in variables - used later
+    // armazenando a string de entrada atual e seu último caractere em variáveis ​​- usado posteriormente
     var currentString = input.innerHTML;
     var lastChar = currentString[currentString.length - 1];
 
-    // if last character entered is an operator, replace it with the currently pressed one
+    // se o último caractere inserido for um operador, substitua-o pelo atual pressionado
     if (lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
       var newString = currentString.substring(0, currentString.length - 1) + e.target.innerHTML;
       input.innerHTML = newString;
     } else if (currentString.length == 0) {
-      // if first key pressed is an opearator, don't do anything
+   // se a primeira tecla pressionada for um operador, não faça nada
       console.log("enter a number first");
     } else {
-      // else just add the operator pressed to the input
+      // caso contrário, apenas adicione o operador pressionado à entrada
       input.innerHTML += e.target.innerHTML;
     }
 
   });
 }
 
-// on click of 'equal' button
+// ao clicar no botão 'igual'
 result.addEventListener("click", function() {
 
-  // this is the string that we will be processing eg. -10+26+33-56*34/23
+ // esta é a string que iremos processar, por exemplo. -10+26+33-56*34/23
   var inputString = input.innerHTML;
 
-  // forming an array of numbers. eg for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
+  // formando um array de números. por exemplo, para a string acima, será: números = ["10", "26", "33", "56", "34", "23"]
   var numbers = inputString.split(/\+|\-|\×|\÷/g);
 
-  // forming an array of operators. for above string it will be: operators = ["+", "+", "-", "*", "/"]
-  // first we replace all the numbers and dot with empty string and then split
+  // formando um array de operadores. para a string acima será: operator = ["+", "+", "-", "*", "/"]
+  // primeiro substituímos todos os números e pontos por uma string vazia e depois dividimos
   var operators = inputString.replace(/[0-9]|\./g, "").split("");
 
   console.log(inputString);
@@ -75,11 +75,10 @@ result.addEventListener("click", function() {
   console.log(numbers);
   console.log("----------------------------");
 
-  // now we are looping through the array and doing one operation at a time.
-  // first divide, then multiply, then subtraction and then addition
-  // as we move we are alterning the original numbers and operators array
-  // the final element remaining in the array will be the output
-
+  // agora estamos percorrendo o array e fazendo uma operação por vez.
+  // primeiro divide, depois multiplica, depois subtrai e depois soma
+  // à medida que nos movemos, estamos alterando o array original de números e operadores
+  // o elemento final restante no array será a saída
   var divide = operators.indexOf("÷");
   while (divide != -1) {
     numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]);
@@ -103,18 +102,18 @@ result.addEventListener("click", function() {
 
   var add = operators.indexOf("+");
   while (add != -1) {
-    // using parseFloat is necessary, otherwise it will result in string concatenation :)
+    // usar parseFloat é necessário, caso contrário resultará em concatenação de strings :)
     numbers.splice(add, 2, parseFloat(numbers[add]) + parseFloat(numbers[add + 1]));
     operators.splice(add, 1);
     add = operators.indexOf("+");
   }
 
-  input.innerHTML = numbers[0]; // displaying the output
+  input.innerHTML = numbers[0]; // exibindo a saída
 
-  resultDisplayed = true; // turning flag if result is displayed
+  resultDisplayed = true; // virando a bandeira se o resultado for exibido
 });
 
-// clearing the input on press of clear
+// limpando a entrada ao pressionar limpar
 clear.addEventListener("click", function() {
   input.innerHTML = "";
 });

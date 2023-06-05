@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    .calc {
+      align-content: center;
+      position: relative;
+      border: 2px solid blue;
+      width: 20%;
+      background-color: gray;
+    }
+    .texta {
+      margin-left: 2%;
+      margin-top: 5px;
+      width: 93%;
+    }
+    .textb {
+      margin-left: 2%;
+      margin-top: 1px;
+      width: 93%;
+    }
+    .radio {
+      text-align: center;
+      margin-left: 12%;
+    }
+    .submit {
+      text-align: center;
+      margin-left: 38%;
+      margin-top: 1%;
+    }
+  </style>
+
+  <head>
+    <title>Calculator On-Line</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <div class="calc">
+      <form method="post" action="/app.php">
+        <textarea name="txta" class="texta" placeholder="Valore 1"></textarea>
+        <textarea name="txtb" class="textb" placeholder="Valore 2"></textarea>
+        <input type="radio" name="operator" value="+" class="radio" checked>+</input>
+        <input type="radio" name="operator" value="-" class="radio">-</input>
+        <input type="radio" name="operator" value="*" class="radio">*</input>
+        <input type="radio" name="operator" value="/" class="radio">/</input>
+		<input type="submit" name="submit" value="Submit" class="submit"/>
+      </form>
+	  
+    </div>
+  </body>
+</html>

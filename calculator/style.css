@@ -38,7 +38,7 @@ body {
   
 
   
-  .operators div {
+  .operators.div,input {
     display: inline-block;
     border: 1px solid #bbb;
     border-radius: 1px;
